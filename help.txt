@@ -1,0 +1,8 @@
+rAI is a tool to prompt AI from the terminal.
+
+Give input in the form of a string using double quotes(" ") at the end of the command
+
+Flags:-
+
+-pt : for plain text output
+-h  : for help
