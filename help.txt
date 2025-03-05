@@ -5,4 +5,5 @@ Give input in the form of a string using double quotes(" ") at the end of the co
 Flags:-
 
 -pt : for plain text output
--h  : for help
+-h or --help  : for help
+-f or --fetch : for fetching latest models

@@ -18,11 +18,18 @@ send_message() {
 		jq -r '.choices[0].message.content'
 }
 
+fetch() {
+	./db.sh
+	exit
+}
+
 raihelp() {
 	cat ./help.txt
 	exit
 }
 
+#MODEL="moonshotai/moonlight-16b-a3b-instruct:free"
+#MODEL="nousresearch/deephermes-3-llama-3-8b-preview:free"
 #MODEL="google/gemini-2.0-flash-lite-preview-02-05:free"
 #MODEL="cognitivecomputations/dolphin3.0-r1-mistral-24b:free"
 #MODEL="cognitivecomputations/dolphin3.0-mistral-24b:free"
@@ -54,7 +61,9 @@ MODEL="google/gemini-2.0-flash-exp:free"
 #MODEL="huggingfaceh4/zephyr-7b-beta:free"
 #MODEL="gryphe/mythomax-l2-13b:free"
 if [ $# = 0 ]; then
-	raihelp
+	echo "rai: missing prompt"
+	echo "Try 'rai --help' for more information"
+	exit
 fi
 while [[ $# -gt 0 ]]; do
 	case "$1" in
@@ -65,9 +74,11 @@ while [[ $# -gt 0 ]]; do
 		fi
 		shift
 		;;
-	-h)
+	-h | --help)
 		raihelp
-		shift
+		;;
+	-f | --fetch)
+		fetch
 		;;
 	*)
 		if [ $# == 1 ]; then
